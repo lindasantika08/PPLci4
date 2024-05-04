@@ -10,10 +10,16 @@ class BarangModel extends Model
     protected $primaryKey = 'id_barang';
     protected $allowedFields = ['kode', 'gambar', 'nama_barang', 'harga', 'stok', 'deskripsi'];
 
+    public function getBarangPaginated($perPage = 10)
+    {
+        return $this->paginate($perPage);
+    }
+
     public function getBarang()
     {
         $query = $this->query("SELECT kode, gambar, nama_barang, harga, stok, deskripsi FROM barang")->getResultArray();
         return $query;
+
     }
 
     public function updateBarang($id, $data)

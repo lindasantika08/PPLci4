@@ -9,23 +9,28 @@ use CodeIgniter\Files\File;
 
 class CBarang extends BaseController
 {
+
     public function index()
     {
         $model = new BarangModel();
-        $data['barang'] = $model->findAll(); // Mengambil semua data barang
-        return view ('v_barang', $data);
+        $data['barang'] = $model->findAll();
+        return view('v_barang', $data);
     }
 
     public function search()
     {
+        $keyword = $this->request->getGet('keyword');
         $model = new BarangModel();
-        $keyword = $this->request->getVar('keyword'); // Mendapatkan keyword pencarian dari pengguna
 
-        // Lakukan pencarian menggunakan model BarangModel
-        $data['barang'] = $model->search($keyword);
+        $data['barang'] = $model->like('nama_barang', $keyword)->paginate(10);
+        $data['pager'] = $model->pager;
+
+        $config['full_tag_open'] = '<div class="pagination">';
+        $config['full_tag_close'] = '</div>';
 
         return view('v_barang', $data);
     }
+
 
     public function view($id)
     {

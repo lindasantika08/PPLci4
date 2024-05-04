@@ -6,20 +6,20 @@ Daftar Barang
 
 <?= $this->section('content') ?>
 <div class="container mt-3">
-    <form action="/CBarang/search" method="get" class="mb-4">
+    <!-- <form action="/CBarang/search" method="get" class="mb-4">
         <div class="input-group">
             <input type="text" name="keyword" class="form-control" placeholder="Cari berdasarkan nama barang...">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Cari</button>
             </div>
         </div>
-    </form>
+    </form> -->
     <!-- Tambahkan button untuk input barang -->
     <div class="mb-3">
         <a href="<?= base_url('CBarang/input') ?>" class="btn btn-primary">Input Barang</a>
     </div>
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table id="barang" class="table table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Kode Barang</th>
@@ -71,7 +71,7 @@ Daftar Barang
     </div>
 </div>
 
-<!-- Anda dapat mempertahankan skrip JavaScript jika diperlukan -->
+
 <script>
     function showDetails(id) {
         var detailsDiv = document.getElementById(id);

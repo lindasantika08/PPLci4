@@ -35,6 +35,8 @@ $routes->get('/CLogin', 'CLogin::index', ['filter' => 'loggedin']);
 $routes->post('/auth/login', 'AuthController::login');
 $routes->post('/auth/logout', 'AuthController::logout');
 
+$routes->get('/CBarang/dataTable', 'CBarang::dataTable', ['filter' => 'auth']);
+
 $routes->get('/', function () {
     return redirect()->to('/CHome');
 });
